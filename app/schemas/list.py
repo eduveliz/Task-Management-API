@@ -4,6 +4,7 @@ from app.schemas.task import TaskResponse
 
 class ListBase(BaseModel):
     name: str
+    project_id: int
 
 class ListCreate(ListBase):
     pass

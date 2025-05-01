@@ -6,6 +6,11 @@ from app.schemas import list as schemas
 
 router = APIRouter(prefix="/lists", tags=["Lists"])
 
+
+@router.get("/", response_model=list[schemas.ListResponse])
+def get_lists(db: Session = Depends(get_db)):
+    return db.query(models.List).all()
+
 @router.post("/", response_model=schemas.ListResponse)
 def create_list(list_data: schemas.ListCreate, db: Session = Depends(get_db)):
     new_list = models.List(**list_data.dict())

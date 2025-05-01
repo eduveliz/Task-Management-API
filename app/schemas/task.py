@@ -5,6 +5,7 @@ class TaskBase(BaseModel):
     title: str
     description: Optional[str] = None
     completed: bool = False
+    list_id: int
 
 class TaskCreate(TaskBase):
     pass
